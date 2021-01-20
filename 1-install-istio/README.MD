@@ -130,6 +130,54 @@ monitoringdashboard.monitoring.kiali.io/vertx-jvm unchanged
 monitoringdashboard.monitoring.kiali.io/vertx-pool unchanged
 monitoringdashboard.monitoring.kiali.io/vertx-server unchanged
 ```
+## Validate istio-system namespace is created
+```bash
+$ kubectl get ns
+NAME                   STATUS   AGE
+default                Active   10h
+istio-system           Active   9h
+kube-node-lease        Active   10h
+kube-public            Active   10h
+kube-system            Active   10h
+kubernetes-dashboard   Active   10h
+```
+## Check all PODs started in istio-system namespace
+```bash
+$ kubectl get pod -n istio-system
+NAME                                    READY   STATUS    RESTARTS   AGE
+grafana-784c89f4cf-jfrjk                1/1     Running   0          6h56m
+istio-egressgateway-8dff9c778-h9njp     1/1     Running   0          6h56m
+istio-ingressgateway-6cfd75fc57-4mnf9   1/1     Running   0          6h56m
+istiod-665965d9c4-sm4b4                 1/1     Running   0          6h56m
+jaeger-7f78b6fb65-xgrct                 1/1     Running   0          6h56m
+kiali-67c67cd9f6-f9qzd                  1/1     Running   0          6h56m
+prometheus-7bfddb8dbf-4wh8l             2/2     Running   0          6h56m
+```
+
+## Check Service
+```bash
+$ kubectl get service -n istio-system
+NAME                   TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                                                                      AGE
+grafana                NodePort       10.111.66.109   <none>        3000:31002/TCP                                                               6h56m
+istio-egressgateway    ClusterIP      10.110.125.94   <none>        80/TCP,443/TCP,15443/TCP                                                     8h
+istio-ingressgateway   LoadBalancer   10.106.187.47   <pending>     15021:32000/TCP,80:31380/TCP,443:32002/TCP,31400:32003/TCP,15443:32004/TCP   9h
+istiod                 ClusterIP      10.96.30.55     <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP                                        9h
+jaeger-collector       ClusterIP      10.108.87.102   <none>        14268/TCP,14250/TCP                                                          6h56m
+kiali                  NodePort       10.106.196.65   <none>        20001:31000/TCP,9090:32253/TCP                                               6h56m
+prometheus             ClusterIP      10.110.51.249   <none>        9090/TCP                                                                     6h56m
+tracing                NodePort       10.104.167.17   <none>        80:31001/TCP                                                                 6h56m
+zipkin                 ClusterIP      10.99.202.63    <none>        9411/TCP                                                                     6h56m
+```
+
+## Get minikube IP
+```bash
+$ minikube ip
+```
+
+## Access url
+  Kiali     :   <minikube-ip>:31000
+  Jaeger    :   <minikube-ip>:31001
+  Grafana   :   <minikube-ip>:31002
 
 ## Create label for automatic istio sidecar injection
 ```
