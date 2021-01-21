@@ -40,3 +40,18 @@ $ curl http://<minikube-ip>:31380
 Hello Openshift V1
 
 ```
+
+Mirroring testing
+
+
+```base
+# In Terminal 1, access aplication in while loop 
+$ while true; do curl  http://10.1.10.7:31380; sleep .5; done
+
+```
+
+
+```base
+# In Terminal 2, access V2 aplication logs.. It shows app 2 also serving trafic  
+$ kubectl logs helloworld-v2-5cfcff699d-xzwmg -c helloworld -f
+```
