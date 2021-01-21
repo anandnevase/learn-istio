@@ -1,4 +1,4 @@
-# Istio Telemetry/Observability Demo
+# Istio Traffic Shifting Demo
 
 ## Istio installation
 Follow below url for istio installation on Minikube
