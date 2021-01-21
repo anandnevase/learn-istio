@@ -9,15 +9,22 @@ spec:
   hosts:
   - '*'
   http:
-  - route:
+  - match:
+    - uri:
+        prefix: /v1
+    - uri:
+        prefix: /
+    route:
     - destination:
         host: helloworld.default.svc.cluster.local
         subset: v1
-      weight: 50
+  - match:
+    - uri:
+        prefix: /v2
+    route:
     - destination:
         host: helloworld.default.svc.cluster.local
         subset: v2
-      weight: 50
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
