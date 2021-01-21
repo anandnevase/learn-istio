@@ -32,7 +32,7 @@ $ kubectl apply -f application-no-istio.yaml
 $ minikube ip
 ```
 
-## Perform Access url
+## Perform Telemetry on below apps
   Kiali     :   <minikube-ip>:31000
   Jaeger    :   <minikube-ip>:31001
   Grafana   :   <minikube-ip>:31002
