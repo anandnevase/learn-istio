@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: helloworld
+  namespace: default
+spec:
+  gateways:
+  - ingress-gateway-configuration
+  hosts:
+  - '*'
+  http:
+  - match:
+    - headers:
+        app-version:
+          exact: v2
+    fault:
+      abort:
+        percentage:
+          value: 100.0
+        httpStatus: 500 # BE CAREFUL WITH INDENTATION!
+    route:
+    - destination:
+        host: helloworld.default.svc.cluster.local
+        subset: v2
+      weight: 100 # default 
+  - route:
+    - destination:
+        host: helloworld.default.svc.cluster.local
+        subset: v1
+      weight: 100 # default 
