@@ -1,0 +1,47 @@
+# Istio Prefix Routing Demo
+
+## Istio installation
+Follow below url for istio installation on Minikube
+https://github.com/anandnevase/learn-istio/blob/main/1-install-istio/README.MD 
+
+
+## Clone install repo
+
+```bash
+$ git clone https://github.com/anandnevase/learn-istio
+Cloning into 'learn-istio'...
+remote: Enumerating objects: 10, done.
+remote: Counting objects: 100% (10/10), done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 10 (delta 0), reused 7 (delta 0), pack-reused 0
+Unpacking objects: 100% (10/10), done.
+```
+
+## Navigate to 5-Prefix-Routing
+```
+$ cd learn-istio/5-Prefix-Routing
+```
+
+## Deploy Sample Hello World App
+```bash
+$ kubectl apply -f 1-deployment.yaml
+```
+## Apply Istio  rules 
+
+```bash
+$ kubectl apply -f istio-rules.yaml
+```
+
+## Access application in browser
+
+Access Version V2
+```bash
+URL     -   http://<minikube-ip>:31380/v2
+Output  -   Hello Openshift V2 
+```
+
+Access Version V1
+```bash
+URL     -   http://<minikube-ip>:31380/v1
+Output  -   Hello Openshift V1
+```
