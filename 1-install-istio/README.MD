@@ -1,4 +1,4 @@
-# Installation Steps for Minikube
+# Istio Installation Steps for Minikube
 
 ## Clone install repo
 
