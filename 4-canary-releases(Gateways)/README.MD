@@ -1,4 +1,4 @@
-# Istio Traffic Shifting Demo
+# Gateway (Canary Releases)
 
 ## Istio installation
 Follow below url for istio installation on Minikube
