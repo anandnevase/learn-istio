@@ -71,3 +71,8 @@ $ curl -H "Authorization: Bearer $TOKEN"  1<service-cluster-ip>:8080
 Hello Openshift V1
 
 ```
+
+##Clean up
+``` bash
+$ kubectl delete all --all
+```

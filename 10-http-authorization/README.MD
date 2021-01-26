@@ -66,3 +66,10 @@ $ kubectl apply -f 5-rating-viewer.yaml
 
 
 ```
+
+
+
+##Clean up
+``` bash
+$ kubectl delete all --all
+```
