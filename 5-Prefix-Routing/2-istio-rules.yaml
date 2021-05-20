@@ -12,8 +12,6 @@ spec:
   - match:
     - uri:
         prefix: /v1
-    - uri:
-        prefix: /
     route:
     - destination:
         host: helloworld.default.svc.cluster.local
